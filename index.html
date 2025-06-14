@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audio Spectrum Designer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="panel">
+        <p class="eyebrow">Signal Processing</p>
+        <h1>Audio Spectrum Designer</h1>
+        <p class="desc">Design tones, layer modulation, and inspect real-time FFT energy distribution in the browser.</p>
+
+        <div class="card">
+          <h2>Synth Controls</h2>
+          <label>Waveform
+            <select id="waveformSelect">
+              <option value="sine">Sine</option>
+              <option value="triangle">Triangle</option>
+              <option value="sawtooth">Sawtooth</option>
+              <option value="square">Square</option>
+            </select>
+          </label>
+          <label>Frequency (Hz)
+            <input id="freqInput" type="range" min="80" max="1600" step="1" value="220" />
+            <span id="freqValue">220</span>
+          </label>
+          <label>Gain
+            <input id="gainInput" type="range" min="0" max="1" step="0.01" value="0.35" />
+            <span id="gainValue">0.35</span>
+          </label>
+          <label>LFO Depth
+            <input id="lfoDepthInput" type="range" min="0" max="140" step="1" value="38" />
+            <span id="lfoDepthValue">38</span>
+          </label>
+          <label>LFO Rate (Hz)
+            <input id="lfoRateInput" type="range" min="0.1" max="16" step="0.1" value="4.2" />
+            <span id="lfoRateValue">4.2</span>
+          </label>
+        </div>
+
+        <div class="card">
+          <h2>Transport</h2>
+          <div class="row">
+            <button id="startBtn">Start Tone</button>
+            <button id="stopBtn">Stop Tone</button>
+          </div>
+          <button id="randomBtn">Random Preset</button>
+        </div>
+
+        <div class="card metrics">
+          <h2>Analysis</h2>
+          <p>Peak Frequency: <strong id="peakText">-</strong></p>
+          <p>Spectral Centroid: <strong id="centroidText">-</strong></p>
+          <p>Energy: <strong id="energyText">0</strong></p>
+        </div>
+      </section>
+
+      <section class="viz-wrap">
+        <canvas id="spectrum" width="980" height="620"></canvas>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
